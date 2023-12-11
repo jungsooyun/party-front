@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script src="./makeProposer.js" type="module"></script>
+    <script>
+      async function displayWalletAddress() {
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+    
+            // 지갑 주소를 표시할 요소 선택 및 표시
+            document.getElementById('walletAddress').textContent = account;
+          } catch (error) {
+            console.error('지갑 주소 가져오기 실패:', error);
+          }
+        } else {
+          console.log('MetaMask가 설치되어 있지 않습니다.');
+        }
+      }
+    
+      document.addEventListener('DOMContentLoaded', () => {
+        displayWalletAddress();
+      });
+    </script>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./Proposal.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ligconsolata:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nico Moji:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Megrim:wght@500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Libre Baskerville:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="proposal">
+      <div class="hero-section1">
+        <div class="nav-bar1">
+          <div class="logo1">
+            <img class="logo-icon1" alt="" src="./public/logo.svg" />
+
+            <div class="h11">GuildDAO</div>
+          </div>
+        </div>
+      </div>
+      <div class="divfont-bold1">
+        <b class="link-proposal">New Proposal</b>
+        <div class="divp-6">
+          <img class="button-icon" alt="" src="./public/button.svg" />
+
+          <div class="button-on-chain">On-chain action</div>
+          <b class="created-by">Created by</b>
+          <b id="walletAddress" class="link-dannyarandaeth">wallet address</b>
+          <div class="button2">
+            <b class="buy">Buy</b>
+          </div>
+          <div class="button3">
+            <b class="buy">Sell</b>
+          </div>
+          <div class="button4">
+            <b class="rent">rent</b>
+          </div>
+        
+          <b class="to">To</b>
+          <div>
+            <input
+              id="toAddress"
+              class="input"
+              type="text"
+              placeholder="0x..."
+            />
+          </div>
+
+          <b class="token-id">NFT Contract</b>
+          <div>
+            <input
+              id="tokenId"
+              class="input1"
+              type="text"
+              placeholder="0x..."
+            />
+          </div>
+          
+          <b class="period-second">Period (second)</b>
+          <div>
+            <input
+              id="periodSeconds"
+              class="input2"
+              type="number"
+              placeholder="second"
+            />
+          </div>
+
+        </div>
+      </div>
+      <div class="button5">
+        <b class="propose">+ Propose</b>
+      </div>
+    </div>
+  </body>
+</html>

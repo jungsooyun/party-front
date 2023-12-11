@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+  --font-michroma: Michroma;
+  --font-ligconsolata: Ligconsolata;
+  --font-libre-baskerville: "Libre Baskerville";
+  --font-megrim: Megrim;
+  --font-nico-moji: "Nico Moji";
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-9xl: 28px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+  --font-size-xl: 20px;
+  --font-size-sm-6: 13.6px;
+  --font-size-sm-8: 13.8px;
+  --font-size-lg: 18px;
+  --font-size-2xl: 21px;
+  --font-size-6xl: 25px;
+  --font-size-11xl: 30px;
+
+  /* Colors */
+  --white: #fff;
+  --color-slategray: #6e7f95;
+  --black: #000;
+  --color-lightsteelblue-100: #bccbdd;
+  --color-lightsteelblue-200: #a7b8cf;
+  --color-lightgray: #cccdcf;
+  --color-royalblue: #0c61eb;
+  --color-lavender-100: #dce5f0;
+  --color-lavender-200: #d1ddeb;
+  --color-gray-100: #fffefe;
+  --color-gray-200: #010410;
+  --color-gainsboro: #d9d9d9;
+  --color-silver-100: #c2c2c4;
+  --cold-grey-30: #b1b5bb;
+  --color-ghostwhite: #f4f7fb;
+  --color-mediumslateblue-100: #3140d3;
+  --dark-blue: #3040d3;
+  --color-lightskyblue: #acd7ff;
+  --color-cornflowerblue: #acb4ff;
+
+  /* Gaps */
+  --gap-5xl: 24px;
+  --gap-base: 16px;
+
+  /* Border radiuses */
+  --br-5xl: 24px;
+  --br-9980xl: 9999px;
+  --br-4xl: 23px;
+  --br-xs: 12px;
+  --br-53xl: 72px;
+  --br-131xl: 150px;
+}

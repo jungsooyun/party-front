@@ -1,0 +1,345 @@
+.vector-shape-icon1 {
+  position: absolute;
+  top: -8px;
+  left: -12px;
+  width: 186.5px;
+  height: 64px;
+}
+.connect-wallet1 {
+  position: absolute;
+  top: 11px;
+  left: 26px;
+}
+.button1 {
+  position: absolute;
+  top: 0;
+  right: 63.5px;
+  width: 162.5px;
+  height: 40px;
+}
+.logo-icon1 {
+  top: calc(50% - 12px);
+  left: 0;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.h11,
+.logo-icon1,
+.logo1 {
+  position: absolute;
+}
+.h11 {
+  top: calc(50% - 13px);
+  left: calc(50% - 83.5px);
+}
+.logo1 {
+  bottom: 43px;
+  left: 62px;
+  width: 237px;
+  height: 40px;
+  overflow: hidden;
+  color: var(--black);
+  font-family: var(--font-michroma);
+}
+.hero-section1,
+.nav-bar1 {
+  position: absolute;
+  top: 8px;
+  left: 49px;
+  width: 1438px;
+  height: 83px;
+}
+.hero-section1 {
+  top: 16px;
+  left: -47px;
+  width: 1533px;
+  height: 1017px;
+  overflow: hidden;
+  text-align: left;
+  font-family: var(--font-ligconsolata);
+}
+.link-proposal {
+  position: absolute;
+  top: 13px;
+  left: calc(50% - 371px);
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 17px;
+}
+.button-icon {
+  position: absolute;
+  height: calc(100% - 70px);
+  top: 35px;
+  bottom: 35px;
+  left: 28px;
+  max-height: 100%;
+  width: 24px;
+  overflow: hidden;
+}
+.button-on-chain {
+  position: absolute;
+  top: 28px;
+  left: 60px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 125.9px;
+  height: 19px;
+}
+.created-by {
+  top: 50px;
+  left: 60px;
+  line-height: 16px;
+  color: var(--color-slategray);
+  width: 66.3px;
+  height: 16px;
+}
+.buy,
+.created-by,
+.link-dannyarandaeth {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+.link-dannyarandaeth {
+  top: 50px;
+  left: 123.1px;
+  line-height: 16px;
+  width: 103.2px;
+  height: 16px;
+}
+.buy {
+  top: 13.2px;
+  left: calc(50% - 62.2px);
+  text-transform: uppercase;
+  justify-content: center;
+  width: 124.4px;
+  height: 15px;
+}
+.button2,
+.button3 {
+  position: absolute;
+  height: calc(100% - 369.6px);
+  width: calc(100% - 586.4px);
+  top: 76px;
+  right: 291.4px;
+  bottom: 293.6px;
+  left: 295px;
+  border-radius: var(--br-5xl);
+  background-color: var(--white);
+  border: 2px solid var(--color-silver-100);
+  box-sizing: border-box;
+  text-align: center;
+}
+.button3 {
+  right: 68.4px;
+  left: 518px;
+}
+.rent {
+  top: 13.2px;
+  left: calc(50% - 62px);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 124.2px;
+  height: 15px;
+}
+.button4,
+.rent,
+.to {
+  position: absolute;
+}
+.button4 {
+  height: calc(100% - 369.6px);
+  width: calc(100% - 587.6px);
+  top: 76px;
+  right: 518.6px;
+  bottom: 293.6px;
+  left: 69px;
+  border-radius: var(--br-5xl);
+  background-color: var(--black);
+  border: 1px solid var(--color-lightsteelblue-100);
+  box-sizing: border-box;
+  text-align: center;
+  color: var(--white);
+}
+.to {
+  top: 123px;
+  left: 79px;
+  line-height: 16px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 150.5px;
+  height: 15px;
+}
+.divplaceholder,
+.x {
+  position: absolute;
+  height: 17px;
+}
+.x {
+  top: 0;
+  left: 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  width: 37.1px;
+}
+.divplaceholder {
+  width: calc(100% - 26.4px);
+  top: 14px;
+  right: 13.4px;
+  left: 13px;
+  overflow: hidden;
+}
+.input {
+  position: absolute;
+  height: calc(100% - 365px);
+  width: calc(100% - 137px);
+  top: 144px;
+  right: 68px;
+  bottom: 221px;
+  left: 69px;
+  border-radius: var(--br-xs);
+  background-color: var(--white);
+  border: 1px solid var(--color-lightsteelblue-100);
+  box-sizing: border-box;
+  font-size: var(--font-size-sm);
+  color: #000000;
+}
+.token-id {
+  position: absolute;
+  top: 196px;
+  left: 79px;
+  line-height: 16px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 150.5px;
+  height: 15px;
+}
+.input1 {
+  position: absolute;
+  height: calc(100% - 365px);
+  width: calc(100% - 137px);
+  top: 217px;
+  right: 68px;
+  bottom: 148px;
+  left: 69px;
+  border-radius: var(--br-xs);
+  background-color: var(--white);
+  border: 1px solid var(--color-lightsteelblue-100);
+  box-sizing: border-box;
+  font-size: var(--font-size-sm);
+  color: #000000;
+}
+.period-second {
+  top: 269px;
+  left: 79px;
+  line-height: 16px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 150.5px;
+  height: 15px;
+}
+.input2,
+.period-second,
+.second {
+  position: absolute;
+}
+.second {
+  top: 0;
+  left: 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  width: 62px;
+  height: 17px;
+}
+.input2 {
+  height: calc(100% - 365px);
+  width: calc(100% - 137px);
+  top: 290px;
+  right: 68px;
+  bottom: 75px;
+  left: 69px;
+  border-radius: var(--br-xs);
+  background-color: var(--white);
+  border: 1px solid var(--color-lightsteelblue-100);
+  box-sizing: border-box;
+  font-size: var(--font-size-sm);
+  color: #000000;
+}
+.divfont-bold1,
+.divp-6 {
+  position: absolute;
+  border-radius: var(--br-5xl);
+}
+.divp-6 {
+  width: 100%;
+  top: 44px;
+  right: 0;
+  left: 0;
+  background-color: #fdfdfd;
+  border: 1px solid var(--black);
+  box-sizing: border-box;
+  height: 411px;
+  text-align: left;
+  font-size: var(--font-size-xs);
+  color: var(--black);
+}
+.divfont-bold1 {
+  height: calc(100% - 895px);
+  width: calc(100% - 600px);
+  top: 153px;
+  right: 276px;
+  bottom: 742px;
+  left: 324px;
+  background-color: var(--black);
+  box-shadow: 0 3px 0 rgba(26, 32, 40, 0.1);
+  font-size: var(--font-size-sm);
+}
+.propose {
+  position: absolute;
+  top: 13.2px;
+  left: calc(50% - 61.3px);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 124.2px;
+  height: 15px;
+}
+.button5 {
+  position: absolute;
+  height: calc(100% - 992px);
+  width: calc(100% - 887px);
+  top: 552px;
+  right: 409px;
+  bottom: 440px;
+  left: 478px;
+  border-radius: var(--br-5xl);
+  background-color: var(--black);
+  border: 1px solid var(--color-lightsteelblue-100);
+  box-sizing: border-box;
+  font-size: var(--font-size-xs);
+}
+.proposal {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 1033px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: var(--white);
+  font-family: var(--font-roboto);
+}
