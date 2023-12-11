@@ -1,26 +1,26 @@
 import { ethers } from "ethers";
 
-import * as abi from "./abi.js";
-
-// rpc 설정
-const provider = new ethers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
-
-// 지갑 설정
-const signer = new ethers.Wallet("", provider);
-
-// 컨트랙트 ABI와 주소 (ABI는 'createParty' 함수에 대한 것이어야 함)
-
-//atomic_base abi
-const contractABI = [
-    {"inputs":[{"internalType":"contract Party","name":"partyImpl","type":"address"},{"components":[{"components":[{"internalType":"address[]","name":"hosts","type":"address[]"},{"internalType":"uint40","name":"voteDuration","type":"uint40"},{"internalType":"uint40","name":"executionDelay","type":"uint40"},{"internalType":"uint16","name":"passThresholdBps","type":"uint16"},{"internalType":"uint96","name":"totalVotingPower","type":"uint96"},{"internalType":"uint16","name":"feeBps","type":"uint16"},{"internalType":"address payable","name":"feeRecipient","type":"address"}],"internalType":"struct PartyGovernance.GovernanceOpts","name":"governance","type":"tuple"},{"components":[{"internalType":"bool","name":"enableAddAuthorityProposal","type":"bool"},{"internalType":"bool","name":"allowArbCallsToSpendPartyEth","type":"bool"},{"internalType":"bool","name":"allowOperators","type":"bool"},{"internalType":"bool","name":"distributionsRequireVote","type":"bool"}],"internalType":"struct ProposalStorage.ProposalEngineOpts","name":"proposalEngine","type":"tuple"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint256","name":"customizationPresetId","type":"uint256"}],"internalType":"struct Party.PartyOptions","name":"opts","type":"tuple"},{"internalType":"contract IERC721[]","name":"preciousTokens","type":"address[]"},{"internalType":"uint256[]","name":"preciousTokenIds","type":"uint256[]"},{"internalType":"uint40","name":"rageQuitTimestamp","type":"uint40"},{"internalType":"address[]","name":"partyMembers","type":"address[]"},{"internalType":"uint96[]","name":"partyMemberVotingPowers","type":"uint96[]"}],"name":"createParty","outputs":[{"internalType":"contract Party","name":"party","type":"address"}],"stateMutability":"nonpayable","type":"function"}
-];
-
-const contractAddress = '0x4ae2533869b9e40e52526f6ed5b607cd80b7365d';
-
-// 컨트랙트 객체 생성
-const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
 async function createPartyTransaction() {
+
+    // Web3Provider를 사용하여 MetaMask와 연결
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    await provider.send("eth_requestAccounts", []);
+
+    // MetaMask 계정의 Signer를 가져옴
+    const signer = provider.getSigner();
+
+    // 컨트랙트 ABI와 주소
+    const contractABI = [
+        {"inputs":[{"internalType":"contract Party","name":"partyImpl","type":"address"},{"components":[{"components":[{"internalType":"address[]","name":"hosts","type":"address[]"},{"internalType":"uint40","name":"voteDuration","type":"uint40"},{"internalType":"uint40","name":"executionDelay","type":"uint40"},{"internalType":"uint16","name":"passThresholdBps","type":"uint16"},{"internalType":"uint96","name":"totalVotingPower","type":"uint96"},{"internalType":"uint16","name":"feeBps","type":"uint16"},{"internalType":"address payable","name":"feeRecipient","type":"address"}],"internalType":"struct PartyGovernance.GovernanceOpts","name":"governance","type":"tuple"},{"components":[{"internalType":"bool","name":"enableAddAuthorityProposal","type":"bool"},{"internalType":"bool","name":"allowArbCallsToSpendPartyEth","type":"bool"},{"internalType":"bool","name":"allowOperators","type":"bool"},{"internalType":"bool","name":"distributionsRequireVote","type":"bool"}],"internalType":"struct ProposalStorage.ProposalEngineOpts","name":"proposalEngine","type":"tuple"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint256","name":"customizationPresetId","type":"uint256"}],"internalType":"struct Party.PartyOptions","name":"opts","type":"tuple"},{"internalType":"contract IERC721[]","name":"preciousTokens","type":"address[]"},{"internalType":"uint256[]","name":"preciousTokenIds","type":"uint256[]"},{"internalType":"uint40","name":"rageQuitTimestamp","type":"uint40"},{"internalType":"address[]","name":"partyMembers","type":"address[]"},{"internalType":"uint96[]","name":"partyMemberVotingPowers","type":"uint96[]"}],"name":"createParty","outputs":[{"internalType":"contract Party","name":"party","type":"address"}],"stateMutability":"nonpayable","type":"function"}
+    ];
+    const contractAddress = '0x4ae2533869b9e40e52526f6ed5b607cd80b7365d';
+
+    // 컨트랙트 객체 생성
+    const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+    // ... 이하 코드 동일 ...
     // 입력값 설정
     const partyImpl = '0x8f228554287f7e00042411ef42a531f87b267aff';
     const governance = {
@@ -64,26 +64,33 @@ async function createPartyTransaction() {
 
     // 트랜잭션 제출
     try {
-        // 가스비 설정
-      const gasLimit = 800000; // 예: 100,000 가스 한도
-      const gasPrice = 50000000000; // 예: 50 gwei
-    
-        const tx = await contract.createParty(partyImpl, opts, preciousTokens, preciousTokenIds, rageQuitTimestamp, partyMembers, partyMemberVotingPowers, {
-            gasLimit: gasLimit,
-            gasPrice: gasPrice
-        });
-    
+        // 트랜잭션 옵션 설정 (가스 한도 및 가스 가격은 필요에 따라 조정)
+        const options = {
+            gasLimit: 800000,
+            gasPrice: ethers.utils.parseUnits('50', 'gwei')
+        };
+
+        // 트랜잭션 전송
+        const tx = await contract.createParty(partyImpl, opts, preciousTokens, preciousTokenIds, rageQuitTimestamp, partyMembers, partyMemberVotingPowers, options);
+
         console.log('Transaction sent! Hash:', tx.hash);
 
+        // 트랜잭션 확인 대기
         const receipt = await tx.wait();
 
-        const partyAddress = receipt.logs[1].address; // 새로 생성된 파티의 주소
-        console.log(partyAddress);
-
+        // 결과 처리
+        const partyAddress = receipt.logs[1].address;
+        console.log('New Party Address:', partyAddress);
         console.log('Transaction confirmed.');
     } catch (error) {
         console.error('Transaction failed:', error);
     }
 }
 
-createPartyTransaction();
+// Event listener for the button click
+document.addEventListener('DOMContentLoaded', () => {
+    const startGuildButton = document.getElementById('startGuildButton');
+    if (startGuildButton) {
+        startGuildButton.addEventListener('click', createPartyTransaction);
+    }
+});
