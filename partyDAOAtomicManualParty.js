@@ -24,7 +24,7 @@ async function createPartyTransaction() {
     // 입력값 설정
     const partyImpl = '0x8f228554287f7e00042411ef42a531f87b267aff';
     const governance = {
-        hosts: ["0x858013142255cad3FD5137bDf4a7A40348Cb4D4a"], // 적절한 값으로 설정
+        hosts: ["0x8EFC11b3f3995ffc22e2917051f5de4091DDA8BB"], // 우리 공용 지갑
         voteDuration: 604800, // 적절한 값으로 설정(기본 설정은 7일 인듯) https://basescan.org/tx/0xadc9e390acfd9becde930d7b208d623ec0368aac52edb05aec001e6e2b13acfb의 16번줄
         executionDelay: 1, // 적절한 값으로 설정(기본은 1인데 뭐하는 놈인지는 잘 모름) 스캔 Input Data 17번줄
         passThresholdBps: '4000', // 50프로를 의미, 이 투표율을 넘기면 프로포절 통과 스캔 Input Data 18번줄
@@ -40,7 +40,7 @@ async function createPartyTransaction() {
     };
     const opts = {
         name: document.querySelector('.input5'),
-        symbol: 'partyDAO',
+        symbol: document.querySelector('.input5'),
         customizationPresetId: 1,
         governance: governance,
         proposalEngine: proposalEngine
@@ -48,7 +48,7 @@ async function createPartyTransaction() {
     const preciousTokens = []; // 기본설정
     const preciousTokenIds = []; // 기본설정
     const rageQuitTimestamp = 0; // 기본설정
-    const partyMembers = ['0x858013142255cad3FD5137bDf4a7A40348Cb4D4a', '0x9e5E2C11A2f6FacB236FD3C345025103dDe190c7'];
+    const partyMembers = ['0x8f228554287f7e00042411ef42a531f87b267aff',  '0x9e5E2C11A2f6FacB236FD3C345025103dDe190c7'];
     const partyMemberVotingPowers = ['1000000000000000000', '1000000000000000000'];
 
     const callData = contract.interface.encodeFunctionData("createParty", [
