@@ -80,6 +80,7 @@ async function createPartyTransaction() {
 
         // 결과 처리
         const partyAddress = receipt.logs[1].address;
+        sessionStorage.setItem('partyAddress', partyAddress);
         console.log('New Party Address:', partyAddress);
         console.log('Transaction confirmed.');
     } catch (error) {
