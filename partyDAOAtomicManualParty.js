@@ -27,7 +27,7 @@ async function createPartyTransaction() {
         hosts: ["0x858013142255cad3FD5137bDf4a7A40348Cb4D4a"], // 적절한 값으로 설정
         voteDuration: 604800, // 적절한 값으로 설정(기본 설정은 7일 인듯) https://basescan.org/tx/0xadc9e390acfd9becde930d7b208d623ec0368aac52edb05aec001e6e2b13acfb의 16번줄
         executionDelay: 1, // 적절한 값으로 설정(기본은 1인데 뭐하는 놈인지는 잘 모름) 스캔 Input Data 17번줄
-        passThresholdBps: '5000', // 50프로를 의미, 이 투표율을 넘기면 프로포절 통과 스캔 Input Data 18번줄
+        passThresholdBps: '4000', // 50프로를 의미, 이 투표율을 넘기면 프로포절 통과 스캔 Input Data 18번줄
         totalVotingPower: '2000000000000000000', // 기본 설정이었음 (유저당 1000000000000000000로 아래에 설정됨 기본설정인듯)
         feeBps: 250, // 기본설정
         feeRecipient: '0xf498fd75ee8d35294952343f1a77cae5ea5af6aa' // 기본설정
@@ -39,8 +39,8 @@ async function createPartyTransaction() {
         distributionsRequireVote: true // 기본설정
     };
     const opts = {
-        name: 'abcde',
-        symbol: 'abcde',
+        name: document.querySelector('.input5'),
+        symbol: 'partyDAO',
         customizationPresetId: 1,
         governance: governance,
         proposalEngine: proposalEngine
