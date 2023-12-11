@@ -1,5 +1,6 @@
 // rpc 설정 골리
-const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+provider.send("eth_requestAccounts", []);
 
 // 지갑 설정
 const signer = provider.getSigner();
@@ -67,7 +68,9 @@ if (contractAddress) {
 const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
 async function encodeDistributeProposalData(nftContract, tokenId, user, expires) {
-    const encoder = ethers.AbiCoder.defaultAbiCoder();
+    ethers.utils.defaultAbiCoder;
+    // version 5 abicoder
+    const encoder = new ethers.utils.AbiCoder();
     // DistributeProposalData 구조체의 각 필드를 인코딩
     return encoder.encode(
         ['address', 'uint256', 'address', 'uint64'],
@@ -84,10 +87,10 @@ async function propose() {
     const user = document.getElementById('toAddress').value;
     //const nftContract = parseInt(document.getElementById('nftcontract').value);
     //const expires = parseInt(document.getElementById('periodSeconds').value);
-    const nftContract = '0x835A7B3f3EB7458D77834A46e4d6e65F5Cb979BA'; // 아무거나 골라서 넣어줘도 됨. 
-    const tokenId = 7; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
+    const nftContract = '0x72Bb55C70b054Ca8B64C66Ec3f62227F6E59fe35'; // 현우님이 보내준, 건우님이 만들어준 이게 진짜 주소
+    const tokenId = 2; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
     //const user = '0x858013142255cad3FD5137bDf4a7A40348Cb4D4a';
-    const expires = 17092948070; 
+    const expires = 17092948070;
 
     const proposalData = "0x00000004" + (await encodeDistributeProposalData(nftContract, tokenId, user, expires)).substring(2); //"0x00000004": rent는 4번 프로포절
 
