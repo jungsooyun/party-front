@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // sessionStorage에서 'partyAddress' 값을 가져옵니다.
+        var partyAddress = sessionStorage.getItem('partyAddress');
+        
+        // 'x04c03cb0' 클래스를 가진 요소를 선택합니다.
+        var addressElement = document.querySelector('.x04c03cb01');
+    
+        // 요소에 텍스트를 설정합니다.
+        if (addressElement && partyAddress) {
+          addressElement.textContent = partyAddress;
+        }
+      });
+    </script>
+    <script src="./acceptProposal.js" type="module"></script>
+    <script src="./executeProposal.js" type="module"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
     <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./GuildStatusWproposal.css" />
+    <link rel="stylesheet" href="./GuiIdStatus.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Ligconsolata:wght@400;700&display=swap"
@@ -50,12 +66,11 @@
         <div class="divflex14">
           <div class="divbg-gradient-to-b1">
             <div class="divoverflow-hidden3">
-              <div class="basepaint-fan-club1">BasePaint Fan Club</div>
+              <div class="basepaint-fan-club1">test</div>
             </div>
-            <img class="divflex-icon1" alt="" src="./public/divflex.svg" />
 
             <div class="divself-start1">
-              <div class="x04c03cb01">0x04c0…3cb0</div>
+              <div class="x04c03cb01">Party Contract</div>
               <img class="svg-icon1" alt="" src="./public/svg.svg" />
             </div>
             <img class="link-svg1" alt="" src="./public/link--svg.svg" />
@@ -65,7 +80,9 @@
                 <b class="members1">Members</b>
               </div>
               <div class="divcursor-pointer4">
-                <b class="inventory1">Inventory</b>
+                <a href="GuildStatusInventory.html" class="inventory-link">
+                  <b class="inventory1">Inventory</b>
+                </a>
               </div>
               <div class="divcursor-pointer5">
                 <b class="details1">Details</b>
@@ -73,7 +90,7 @@
             </div>
             <div class="divflex16">
               <div class="divtext-xs1">
-                <b class="total1">300 TOTAL</b>
+                <b class="total1">200 TOTAL</b>
               </div>
               <div class="divflex17">
                 <b class="voting-power1">Voting power</b>
@@ -88,23 +105,17 @@
               <div class="divflex19">
                 <div class="divflex20">
                   <div class="divflex21">
-                    <b class="x4328c6ed1">0x4328…c6ed</b>
+                    <b class="x4328c6ed1">0x9e5e…90c7</b>
                     <div class="divrelative5"></div>
                   </div>
-                  <div class="div3">33.33%</div>
-                  <div class="div4">33.33%</div>
-                  <div class="div5">33.33%</div>
+                  <div class="div3">50.00%</div>
+
+                  <div class="div5">50.00%</div>
                 </div>
                 <div class="divflex22">
                   <div class="divflex23">
-                    <b class="korayeth1">koray.eth</b>
+                    <b class="korayeth1">0x8efc…a8bb</b>
                     <div class="divrelative6"></div>
-                  </div>
-                </div>
-                <div class="divflex24">
-                  <div class="divflex25">
-                    <b class="x705bf9791">0x705b…f979</b>
-                    <div class="divrelative7"></div>
                   </div>
                 </div>
               </div>
@@ -126,7 +137,7 @@
 
             <div class="button-on-chain1">On-chain action</div>
             <b class="created-by1">Created by</b>
-            <b class="link-dannyarandaeth1">0x039029301</b>
+            <b class="link-dannyarandaeth1">0x8efc11b3f3995ffc22e2917051f5de4091dda8bb</b>
           </div>
         </div>
         <div class="divfont-bold3">
@@ -135,9 +146,9 @@
             <img class="button-icon1" alt="" src="./public/button.svg" />
 
             <div class="button-on-chain1">On-chain action</div>
-            <div class="button-on-chain3">n % accepted</div>
+            <div class="button-on-chain3">50% accepted</div>
             <b class="created-by1">Created by</b>
-            <b class="link-dannyarandaeth1">0x039029301</b>
+            <b class="link-dannyarandaeth1">0x8efc11b3f3995ffc22e2917051f5de4091dda8bb</b>
             <div class="button7">
               <b class="accept">Accept</b>
             </div>
@@ -155,9 +166,9 @@
               </div>
               <div class="button-on-chain-container">
                 <span class="button-on-chain-container1">
-                  <p class="period-7-days">Rent to 0x389182828</p>
-                  <p class="period-7-days">Token ID: 199219191</p>
-                  <p class="period-7-days">Period: 7 days</p>
+                  <p class="period-7-days">Rent to 0x9e5E2C11A2f6FacB236FD3C345025103dDe190c7</p>
+                  <p class="period-7-days">Token ID: 2</p> <!--시연시 맞도록 하드코딩...-->
+                  <p class="period-7-days">Period: until 17092948070</p>
                 </span>
               </div>
               <div class="divflex28"></div>

@@ -3,10 +3,11 @@
 import { ethers } from "ethers";
 
 // Provider 설정
-const provider = new ethers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
+const provider = new ethers.providers.Web3Provider(window.ethereum);
 
 // 컨트랙트 주소 및 ABI 정의
-const contractAddress = '0x835A7B3f3EB7458D77834A46e4d6e65F5Cb979BA';
+// ERC4907 미리 배포한 컨트랙트
+const contractAddress = '0x72Bb55C70b054Ca8B64C66Ec3f62227F6E59fe35';
 const contractABI = [
     {
         "inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"
@@ -23,12 +24,14 @@ const contractABI = [
 const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
 // tokenId 정의
-const tokenId = 2; // 실제 사용할 토큰 ID로 변경
+const tokenId = 0; // 실제 사용할 토큰 ID로 변경  NOTE: 얘를 동적으로 받아줘야합니다.
+// //
 
 async function getOwnerOf(tokenId) {
     try {
         const owner = await contract.ownerOf(tokenId);
         console.log(`The owner of tokenId ${tokenId} is: ${owner}`);
+        document.getElementById("user-value").innerText = `User: ${owner}`;
     } catch (error) {
         console.error('Error:', error);
     }
@@ -64,14 +67,17 @@ async function getExpires(tokenId) {
         // 혹은 const formattedDate = date.toISOString(); 로 바로 변환
 
         // 결과 출력
-        console.log(`The expire date of tokenId ${tokenId} is: ${formattedDate}`); 
+        console.log(`The expire date of tokenId ${tokenId} is: ${formattedDate}`);
+        document.getElementById('expire-at-value').innerText = `Expire at: ${formattedDate}`;
         // 지금 디폴트 셋은 2511년 8월 28일. proposer관련 코드의 expires 값 17092948070에서 1709294807로 바꿔도 될듯
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
+document.getElementById('nft-contract-value').innerText = `nftContract: ${contractAddress}`;
+
 // 함수 호출
-await getOwnerOf(tokenId);
-await getUserOf(tokenId);
-await getExpires(tokenId);
+// await getOwnerOf(tokenId);
+// await getUserOf(tokenId);
+// await getExpires(tokenId);

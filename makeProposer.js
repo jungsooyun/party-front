@@ -1,10 +1,9 @@
-import { ethers } from "ethers";
-
 // rpc 설정 골리
-const provider = new ethers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+provider.send("eth_requestAccounts", []);
 
 // 지갑 설정
-const signer = new ethers.Wallet("", provider);
+const signer = provider.getSigner();
 
 //atomic_base abi
 const contractABI = [
@@ -51,8 +50,17 @@ const contractABI = [
     }
 ];
 
+
+const contractAddress = sessionStorage.getItem('partyAddress');
+if (contractAddress) {
+    console.log('Saved Party Address:', contractAddress);
+    // 여기에서 savedPartyAddress를 사용합니다.
+    // 예: 다른 함수 호출 또는 UI 업데이트
+} else {
+    console.log('No Party Address found in this session');
+}
 //골리
-const contractAddress = '0xCF0e5Dc35A16914fE1b17Cc016D5f266B7B3384D'; 
+//const contractAddress = '0xCF0e5Dc35A16914fE1b17Cc016D5f266B7B3384D'; 
 // 아토믹에서 만든 컨트랙 주소를 넣어줘야함.
 // 하드코딩? 
 
@@ -60,7 +68,9 @@ const contractAddress = '0xCF0e5Dc35A16914fE1b17Cc016D5f266B7B3384D';
 const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
 async function encodeDistributeProposalData(nftContract, tokenId, user, expires) {
-    const encoder = ethers.AbiCoder.defaultAbiCoder();
+    ethers.utils.defaultAbiCoder;
+    // version 5 abicoder
+    const encoder = new ethers.utils.AbiCoder();
     // DistributeProposalData 구조체의 각 필드를 인코딩
     return encoder.encode(
         ['address', 'uint256', 'address', 'uint64'],
@@ -69,19 +79,22 @@ async function encodeDistributeProposalData(nftContract, tokenId, user, expires)
 }
 
 async function propose() {
-    alert('Button clicked! Preparing to submit proposal...');
+    //alert('Button clicked! Preparing to submit proposal...');
     // const nowMillis = Date.now();
     // const nowSeconds = Math.floor(nowMillis / 1000);
 
     // ProposalData 예시 생성
-    const user = document.getElementById('toAddress').value;
-    const nftContract = parseInt(document.getElementById('nftcontract').value);
-    const expires = parseInt(document.getElementById('periodSeconds').value);
-    //const nftContract = '0x835A7B3f3EB7458D77834A46e4d6e65F5Cb979BA'; // 아무거나 골라서 넣어줘도 됨. 
-    const tokenId = 7; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
+    const user = '0x8EFC11b3f3995ffc22e2917051f5de4091DDA8BB'
+    //const user = document.getElementById('toAddress').value;
+    //const nftContract = parseInt(document.getElementById('nftcontract').value);
+    //const expires = parseInt(document.getElementById('periodSeconds').value);
+    const nftContract = '0x4568d45E9b9008C1958b089AaFcd892168f8FcE7'; // 현우님이 보내준, 건우님이 만들어준 이게 진짜 주소
+    const tokenId = 2; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
     //const user = '0x858013142255cad3FD5137bDf4a7A40348Cb4D4a';
-    //const expires = 17092948070; 
-
+    const expires = 17092948070;
+    sessionStorage.setItem('UserID', user);
+    sessionStorage.setItem('NFTContract', nftContract);
+    sessionStorage.setItem('Expires', expires);
     const proposalData = "0x00000004" + (await encodeDistributeProposalData(nftContract, tokenId, user, expires)).substring(2); //"0x00000004": rent는 4번 프로포절
 
     // Proposal 데이터 인코딩
@@ -114,6 +127,7 @@ async function propose() {
         await tx.wait();
         console.log('Transaction confirmed.');
         alert('Your proposal has been submitted successfully!');
+        window.location.href = 'GuiIdStatus.html';
     } catch (error) {
         console.error('Transaction failed:', error);
         alert('An error occurred while submitting your proposal.');
@@ -121,7 +135,12 @@ async function propose() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.button5').addEventListener('click', propose);
+  document.querySelector('.button5').addEventListener('click', async () => {
+
+      // 이후 로직에 provider와 signer 사용
+      // 예: const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      propose(signer); // 함수 수정 필요
+  });
 });
 
 //await propose();

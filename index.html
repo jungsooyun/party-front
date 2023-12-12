@@ -1,6 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js">
+    </script>
+    <script>
+      async function ConnectWallet() {
+        if (typeof window.ethereum !== 'undefined') {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            console.log('Connected account:', accounts[0]);
+
+            // 원래 버튼 숨기기
+            const originalButton = document.querySelector('.WalletButton'); // 클래스 이름으로 찾기
+            originalButton.style.display = 'none';
+
+            // 새 버튼 표시 및 설정
+            const viewWalletButton = document.getElementById('viewWalletButton');
+            viewWalletButton.style.display = 'block';
+            const walletAddressText = viewWalletButton.querySelector('.wallet-address8'); // <b> 태그 찾기
+            walletAddressText.innerText = `Wallet Address: ${accounts[0]}`;
+
+            // 새 버튼에 클릭 이벤트 추가
+            viewWalletButton.onclick = function() {
+              window.location.href = `Profile.html?address=${accounts[0]}`; // 프로필 페이지 URL로 교체
+            };
+
+          } catch (error) {
+            console.error('User denied account access');
+          }
+        } else {
+          console.log('MetaMask is not installed');
+        }
+      }
+      async function checkWalletConnection() {
+        if (window.ethereum && window.ethereum.selectedAddress) {
+          // 이미 연결된 계정이 있는 경우
+          const connectedAccount = window.ethereum.selectedAddress;
+          displayWalletAddress(connectedAccount);
+        }
+      }
+
+      function displayWalletAddress(account) {
+        // 원래 버튼 숨기기
+        const originalButton = document.querySelector('.WalletButton');
+        originalButton.style.display = 'none';
+
+        // 새 버튼 표시 및 설정
+        const viewWalletButton = document.getElementById('viewWalletButton');
+        viewWalletButton.style.display = 'block';
+        const walletAddressText = viewWalletButton.querySelector('.wallet-address8');
+        walletAddressText.innerText = `Wallet Address: ${account}`;
+
+        // 새 버튼에 클릭 이벤트 추가
+        viewWalletButton.onclick = function() {
+          window.location.href = `Profile.html?address=${account}`;
+        };
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        checkWalletConnection();
+      });
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -32,94 +92,321 @@
     />
   </head>
   <body>
-    <div class="guild-status-wo-proposal">
-      <div class="hero-section">
-        <div class="divjsx-1084485634">
-          <div class="divrelative">
-            <div class="divflex"></div>
-          </div>
+    <div class="landing-page">
+      <div class="footer">
+        <div class="menu">
+          <div class="privacy-policy">Privacy Policy</div>
+          <div class="privacy-policy">Terms of Use</div>
+          <div class="privacy-policy">Sales and Refunds</div>
+          <div class="privacy-policy">Legal</div>
+          <div class="privacy-policy">Site Map</div>
         </div>
-        <div class="nav-bar">
-          <div class="logo">
-            <img class="logo-icon" alt="" src="./public/logo.svg" />
+        <div class="copyright">
+          <div class="all-rights-reserved">© 2023 All Rights Reserved</div>
+        </div>
+        <div class="vector-line"></div>
+        <div class="text-content">
+          <div class="logo-text">
+            <div class="logo8">
+              <img class="logo-icon9" alt="" src="./public/logo2.svg" />
 
-            <div class="h1">GuildDAO</div>
-          </div>
-        </div>
-        <div class="divflex1">
-          <div class="divbg-gradient-to-b">
-            <div class="divoverflow-hidden">
-              <div class="basepaint-fan-club">BasePaint Fan Club</div>
+              <div class="h18">GuildDAO</div>
             </div>
-            <img class="divflex-icon" alt="" src="./public/divflex.svg" />
+            <div class="experience-the-game">
+              Experience the game that will change your the way you play.
+            </div>
+          </div>
+          <div class="subscription">
+            <div class="privacy-policy">
+              <p class="subscribe-to-stay">
+                Subscribe to stay tuned for latest updates.
+              </p>
+              <p class="subscribe-to-stay">Let's do it!</p>
+            </div>
+            <div class="subscribe3">
+              <div class="input-field">
+                <div class="input-field-child"></div>
+                <div class="enter-your-email">Enter your email Address</div>
+              </div>
+              <div class="button22">
+                <b class="subscribe">Subscribe</b>
+              </div>
+            </div>
+          </div>
+          <div class="socials">
+            <div class="follow-us">Follow Us</div>
+            <div class="social-parent">
+              <img class="social-icon" alt="" src="./public/social.svg" />
 
-            <div class="divself-start">
-              <div class="x04c03cb0">0x04c0…3cb0</div>
-              <img class="svg-icon" alt="" src="./public/svg.svg" />
-            </div>
-            <img class="link-svg" alt="" src="./public/link--svg.svg" />
+              <img class="social-icon" alt="" src="./public/social1.svg" />
 
-            <div class="divflex2">
-              <div class="divcursor-pointer">
-                <b class="members">Members</b>
-              </div>
-              <div class="divcursor-pointer1">
-                <b class="inventory">Inventory</b>
-              </div>
-              <div class="divcursor-pointer2">
-                <b class="details">Details</b>
-              </div>
-            </div>
-            <div class="divflex3">
-              <div class="divtext-xs">
-                <b class="total">300 TOTAL</b>
-              </div>
-              <div class="divflex4">
-                <b class="voting-power">Voting power</b>
-                <img
-                  class="chevron-downsvg-icon"
-                  alt=""
-                  src="./public/chevrondownsvg.svg"
-                />
-              </div>
-            </div>
-            <div class="divflex5">
-              <div class="divflex6">
-                <div class="divflex7">
-                  <div class="divflex8">
-                    <b class="x4328c6ed">0x4328…c6ed</b>
-                    <div class="divrelative1"></div>
-                  </div>
-                  <div class="div">33.33%</div>
-                  <div class="div1">33.33%</div>
-                  <div class="div2">33.33%</div>
-                </div>
-                <div class="divflex9">
-                  <div class="divflex10">
-                    <b class="korayeth">koray.eth</b>
-                    <div class="divrelative2"></div>
-                  </div>
-                </div>
-                <div class="divflex11">
-                  <div class="divflex12">
-                    <b class="x705bf979">0x705b…f979</b>
-                    <div class="divrelative3"></div>
-                  </div>
-                </div>
-              </div>
+              <img class="social-icon2" alt="" src="./public/social2.svg" />
             </div>
           </div>
-          <div class="divfont-bold">
-            <div class="divoverflow-hidden1">
-              <div class="new-proposal">+ New Proposal</div>
+          <div class="contact">
+            <div class="follow-us">Contact Us</div>
+            <div class="phone-number">
+              <div class="div21">+1 800 854-36-80</div>
             </div>
           </div>
         </div>
-        <div class="divoverflow-hidden2">
-          <div class="basepaint-fan-club">Proposal History</div>
+      </div>
+      <div class="feature-section">
+        <div class="text-content1">
+          <div class="h2">
+            <p class="subscribe-to-stay">
+              <span>
+                <span class="introducing">Introducing...</span>
+                <span> Guild Memberships</span>
+              </span>
+            </p>
+            <p class="blank-line">
+              <span>
+                <span>&nbsp;</span>
+              </span>
+            </p>
+            <p class="on-chain-transferable-guild-m">
+              <span>
+                <span>On-chain, transferable Guild memberships.</span>
+              </span>
+            </p>
+            <p class="subscribe-to-stay">
+              <span>
+                <span>A Guild Card is 3 thing in 1:</span>
+              </span>
+            </p>
+          </div>
         </div>
-        <div class="no-proposal-yet">No Proposal yet...</div>
+        <div class="main-features">
+          <div class="container">
+            <img class="card-ui-icon" alt="" src="./public/card-ui.svg" />
+
+            <div class="vector-parent">
+              <img class="vector-icon" alt="" src="./public/vector.svg" />
+
+              <div class="voting-rights">Voting rights</div>
+              <div class="create-and-vote-container">
+                <p class="subscribe-to-stay">
+                  Create and vote on proposals, or delegate your votes to
+                  someone else.
+                </p>
+                <p class="subscribe-to-stay">
+                  Your guild can decide how long and to whom to lend ERC-4907
+                  items.
+                </p>
+              </div>
+            </div>
+            <div class="corner-vectors">
+              <div class="corner-line"></div>
+              <div class="corner-line1"></div>
+            </div>
+          </div>
+          <div class="container1">
+            <img class="card-ui-icon" alt="" src="./public/card-ui.svg" />
+
+            <div class="vector-group">
+              <img class="vector-icon1" alt="" src="./public/vector1.svg" />
+
+              <div class="voting-rights">Ownership</div>
+              <div class="create-and-vote-container">
+                Claim ETH or tokens from the Guild, or sell on any marketplace.
+              </div>
+            </div>
+            <div class="corner-vectors">
+              <div class="corner-line"></div>
+              <div class="corner-line1"></div>
+            </div>
+          </div>
+          <div class="container2">
+            <img class="card-ui-icon" alt="" src="./public/card-ui.svg" />
+
+            <div class="vector-group">
+              <img class="icon" alt="" src="./public/icon.svg" />
+
+              <div class="voting-rights">Dynamic UI</div>
+              <div class="create-and-vote-container">
+                See the latest infor about the Guild right from your wallet, all
+                on-chain.
+              </div>
+            </div>
+            <div class="corner-vectors">
+              <div class="corner-line"></div>
+              <div class="corner-line1"></div>
+            </div>
+          </div>
+        </div>
+        <img
+          class="image-container-icon"
+          alt=""
+          src="./public/image-container.svg"
+        />
+      </div>
+      <div class="hero-section8">
+        <div class="guilddao">
+          <span class="guilddao-txt">
+            <span>GuildDAO</span>
+            <span class="span"> </span>
+          </span>
+        </div>
+        <div class="nav-bar8">
+          <img class="vector-line-icon" alt="" src="./public/vector-line.svg" />
+
+          <div class="nav-links">
+            <div class="privacy-policy">Home</div>
+            <div class="about">About</div>
+            <div class="privacy-policy">About</div>
+            <div class="privacy-policy">Contact Us</div>
+          </div>
+          <button class="WalletButton" onclick="ConnectWallet()">
+            <img
+              class="vector-shape-icon8"
+              alt=""
+              src="./public/vector-shape.svg"
+            />
+
+            <b class="connect-wallet8">CONNECT WALLTET</b>
+          </button>
+          <button class="WalletButton" id="viewWalletButton" style="display: none;">
+            <b class="wallet-address8"></b>
+          </button>
+          <div class="logo9">
+            <img class="logo-icon9" alt="" src="./public/logo.svg" />
+
+            <div class="h18">GuildDAO</div>
+          </div>
+        </div>
+        <div class="text-content2">
+          <div class="h110">
+            <p class="subscribe-to-stay">GuildDAO</p>
+            <p class="your-group-onchain">Your Group, onchain.</p>
+          </div>
+          <div class="h4">
+            <p class="subscribe-to-stay">
+              Guild is the best way to create a group on
+            </p>
+            <p class="subscribe-to-stay">
+              Ethereum. Gather members, vote on decisions, and experience
+              Ethereum in multiplayer.
+            </p>
+          </div>
+          <div class="button24" id="buttonContainer2">
+            <img
+              class="vector-shape-icon9"
+              alt=""
+              src="./public/vector-shape1.svg"
+            />
+
+            <b class="start-guild1">Start Guild</b>
+          </div>
+          <div class="button25" id="buttonContainer3">
+            <img
+              class="vector-shape-icon10"
+              alt=""
+              src="./public/vector-shape2.svg"
+            />
+
+            <b class="join-guild">Join Guild</b>
+          </div>
+        </div>
+        <div class="features">
+          <div class="mini-card">
+            <img class="card-ui-icon3" alt="" src="./public/card-ui1.svg" />
+
+            <img
+              class="arrow-right-icon"
+              alt=""
+              src="./public/arrowright.svg"
+            />
+
+            <div class="icon-group">
+              <img class="icon" alt="" src="./public/icon1.svg" />
+
+              <div class="privacy-policy">
+                <p class="subscribe-to-stay">
+                  <b>Create a Guild</b>
+                </p>
+                <p class="subscribe-to-stay">&nbsp;</p>
+                <p class="subscribe-to-stay">With flexible</p>
+                <p class="subscribe-to-stay">crowdfunding methods</p>
+              </div>
+            </div>
+            <div class="corner-vectors3">
+              <div class="corner-line6"></div>
+              <div class="corner-line7"></div>
+            </div>
+          </div>
+          <div class="mini-card1">
+            <img class="card-ui-icon4" alt="" src="./public/card-ui1.svg" />
+
+            <img
+              class="arrow-right-icon"
+              alt=""
+              src="./public/arrowright.svg"
+            />
+
+            <div class="icon-container">
+              <img class="icon" alt="" src="./public/icon2.svg" />
+
+              <div class="privacy-policy">
+                <p class="subscribe-to-stay">
+                  <b>Make Decisions</b>
+                </p>
+                <p class="subscribe-to-stay">&nbsp;</p>
+                <p class="subscribe-to-stay">With on-chain voting</p>
+                <p class="subscribe-to-stay">and delegation</p>
+              </div>
+            </div>
+            <div class="corner-vectors4">
+              <div class="corner-line6"></div>
+              <div class="corner-line7"></div>
+            </div>
+          </div>
+          <div class="mini-card1">
+            <img class="card-ui-icon4" alt="" src="./public/card-ui1.svg" />
+
+            <img
+              class="arrow-right-icon"
+              alt=""
+              src="./public/arrowright.svg"
+            />
+
+            <div class="frame-div">
+              <img class="icon" alt="" src="./public/icon3.svg" />
+
+              <div class="take-action-perform-container">
+                <p class="subscribe-to-stay">
+                  <b>Take Action</b>
+                </p>
+                <p class="subscribe-to-stay">&nbsp;</p>
+                <p class="subscribe-to-stay">Perform any Ethereum</p>
+                <p class="subscribe-to-stay">transaction</p>
+                <p class="subscribe-to-stay">as a Guild</p>
+              </div>
+            </div>
+            <div class="corner-vectors4">
+              <div class="corner-line6"></div>
+              <div class="corner-line7"></div>
+            </div>
+          </div>
+        </div>
+        <img class="hero-image-icon" alt="" src="./public/hero-image.svg" />
       </div>
     </div>
+
+    <script>
+      var buttonContainer2 = document.getElementById("buttonContainer2");
+      if (buttonContainer2) {
+        buttonContainer2.addEventListener("click", function (e) {
+          window.location.href = "./StartGuild.html";
+        });
+      }
+      
+      var buttonContainer3 = document.getElementById("buttonContainer3");
+      if (buttonContainer3) {
+        buttonContainer3.addEventListener("click", function (e) {
+          window.location.href = "./JoinGuildX.html";
+        });
+      }
+      </script>
   </body>
 </html>
