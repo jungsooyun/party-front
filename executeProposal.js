@@ -25,8 +25,13 @@ if (contractAddress) {
 const contractABI = [
   {
       "type": "function",
-      "name": "propose",
+      "name": "execute",
       "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
         {
           "name": "proposal",
           "type": "tuple",
@@ -50,20 +55,29 @@ const contractABI = [
           ]
         },
         {
-          "name": "latestSnapIndex",
-          "type": "uint256",
-          "internalType": "uint256"
-        }
-      ],
-      "outputs": [
+          "name": "preciousTokens",
+          "type": "address[]",
+          "internalType": "contract IERC721[]"
+        },
         {
-          "name": "proposalId",
-          "type": "uint256",
-          "internalType": "uint256"
+          "name": "preciousTokenIds",
+          "type": "uint256[]",
+          "internalType": "uint256[]"
+        },
+        {
+          "name": "progressData",
+          "type": "bytes",
+          "internalType": "bytes"
+        },
+        {
+          "name": "extraData",
+          "type": "bytes",
+          "internalType": "bytes"
         }
       ],
-      "stateMutability": "nonpayable"
-  }
+      "outputs": [],
+      "stateMutability": "payable"
+  },
 ];
 
 //골리
@@ -73,12 +87,14 @@ const contractABI = [
 const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
 async function encodeDistributeProposalData(nftContract, tokenId, user, expires) {
-    const encoder = ethers.AbiCoder.defaultAbiCoder();
-    // DistributeProposalData 구조체의 각 필드를 인코딩
-    return encoder.encode(
+  ethers.utils.defaultAbiCoder;
+  // version 5 abicoder
+  const encoder = new ethers.utils.AbiCoder();
+  // DistributeProposalData 구조체의 각 필드를 인코딩
+  return encoder.encode(
       ['address', 'uint256', 'address', 'uint64'],
       [nftContract, tokenId, user, expires]
-    );
+  );
 }
 
 
