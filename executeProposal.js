@@ -1,10 +1,25 @@
 import { ethers } from "ethers";
 
 // rpc 설정 골리
-const provider = new ethers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
+//const provider = new ethers.JsonRpcProvider("https://goerli.infura.io/v3/50e195e9e1cb48dba3b50c212198bc7e");
 
 // 지갑 설정
-const signer = new ethers.Wallet("1번지갑", provider);
+//const signer = new ethers.Wallet("1번지갑", provider);
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+provider.send("eth_requestAccounts", []);
+
+// 지갑 설정
+const signer = provider.getSigner();
+
+const contractAddress = sessionStorage.getItem('partyAddress');
+if (contractAddress) {
+    console.log('Saved Party Address:', contractAddress);
+    // 여기에서 savedPartyAddress를 사용합니다.
+    // 예: 다른 함수 호출 또는 UI 업데이트
+} else {
+    console.log('No Party Address found in this session');
+}
 
 //atomic_base abi
 const contractABI = [
@@ -66,7 +81,7 @@ const contractABI = [
 ];
 
 //골리
-const contractAddress = '0xCF0e5Dc35A16914fE1b17Cc016D5f266B7B3384D';
+//const contractAddress = '0xCF0e5Dc35A16914fE1b17Cc016D5f266B7B3384D';
 
 // 컨트랙트 객체 생성
 const contract = new ethers.Contract(contractAddress, contractABI, signer);
@@ -134,4 +149,14 @@ async function execute() {
     }
 }
 
-await execute();
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.button8').addEventListener('click', async () => {
+
+      // 이후 로직에 provider와 signer 사용
+      // 예: const contract = new ethers.Contract(contractAddress, contractABI, signer);
+      propose(signer); // 함수 수정 필요
+  });
+});
+
+
+//await execute();
