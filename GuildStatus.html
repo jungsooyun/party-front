@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // sessionStorage에서 'partyAddress' 값을 가져옵니다.
+        var partyAddress = sessionStorage.getItem('partyAddress');
+        
+        // 'x04c03cb0' 클래스를 가진 요소를 선택합니다.
+        var addressElement = document.querySelector('.x04c03cb0');
+    
+        // 요소에 텍스트를 설정합니다.
+        if (addressElement && partyAddress) {
+          addressElement.textContent = partyAddress;
+        }
+      });
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -51,9 +65,8 @@
             <div class="divoverflow-hidden">
               <div class="basepaint-fan-club">test</div>
             </div>
-
             <div class="divself-start">
-              <div class="x04c03cb0">0x04c0…3cb0</div>
+              <div class="x04c03cb0">Party Contract</div>
               <img class="svg-icon" alt="" src="./public/svg.svg" />
             </div>
             <img class="link-svg" alt="" src="./public/link--svg.svg" />
@@ -86,7 +99,7 @@
               <div class="divflex6">
                 <div class="divflex7">
                   <div class="divflex8">
-                    <b class="x4328c6ed">0x4328…c6ed</b>
+                    <b class="x4328c6ed">0x9e5e…90c7</b>
                     <div class="divrelative1"></div>
                   </div>
                   <div class="div">50.00%</div>
@@ -94,7 +107,7 @@
                 </div>
                 <div class="divflex9">
                   <div class="divflex10">
-                    <b class="korayeth">koray.eth</b>
+                    <b class="korayeth">0x8efc…a8bb</b>
                     <div class="divrelative2"></div>
                   </div>
                 </div>
@@ -103,7 +116,9 @@
           </div>
           <div class="divfont-bold">
             <div class="divoverflow-hidden1">
-              <div class="new-proposal">+ New Proposal</div>
+              <a href="Proposal.html" class="new-proposal-link">
+                <div class="new-proposal">+ New Proposal</div>
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // sessionStorage에서 'partyAddress' 값을 가져옵니다.
+        var partyAddress = sessionStorage.getItem('partyAddress');
+        
+        // 'x04c03cb0' 클래스를 가진 요소를 선택합니다.
+        var addressElement = document.querySelector('.x04c03cb01');
+    
+        // 요소에 텍스트를 설정합니다.
+        if (addressElement && partyAddress) {
+          addressElement.textContent = partyAddress;
+        }
+      });
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -54,7 +68,7 @@
             </div>
 
             <div class="divself-start1">
-              <div class="x04c03cb01">0x04c0…3cb0</div>
+              <div class="x04c03cb01">Party Contract</div>
               <img class="svg-icon1" alt="" src="./public/svg.svg" />
             </div>
             <img class="link-svg1" alt="" src="./public/link--svg.svg" />
@@ -87,7 +101,7 @@
               <div class="divflex19">
                 <div class="divflex20">
                   <div class="divflex21">
-                    <b class="x4328c6ed1">0x4328…c6ed</b>
+                    <b class="x4328c6ed1">0x9e5e…90c7</b>
                     <div class="divrelative5"></div>
                   </div>
                   <div class="div3">50.00%</div>
@@ -96,7 +110,7 @@
                 </div>
                 <div class="divflex22">
                   <div class="divflex23">
-                    <b class="korayeth1">koray.eth</b>
+                    <b class="korayeth1">0x8efc…a8bb</b>
                     <div class="divrelative6"></div>
                   </div>
                 </div>
