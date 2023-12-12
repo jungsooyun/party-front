@@ -124,6 +124,7 @@ async function propose() {
         await tx.wait();
         console.log('Transaction confirmed.');
         alert('Your proposal has been submitted successfully!');
+        window.location.href = 'GuiIdStatus.html';
     } catch (error) {
         console.error('Transaction failed:', error);
         alert('An error occurred while submitting your proposal.');
