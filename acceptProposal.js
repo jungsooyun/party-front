@@ -83,7 +83,11 @@ async function accept() {
         console.log('Transaction sent! Hash:', tx.hash);
         await tx.wait();
         console.log('Transaction confirmed.');
-    } catch (error) {
+        var acceptedElement = document.querySelector('.button-on-chain3');
+        if (acceptedElement) {
+            acceptedElement.textContent = '50% accepted';
+        }
+    } catch (error) {s
         console.error('Transaction failed:', error);
     }
 }
