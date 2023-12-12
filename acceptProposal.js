@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 이후 로직에 provider와 signer 사용
       // 예: const contract = new ethers.Contract(contractAddress, contractABI, signer);
-      accept(signer); // 함수 수정 필요
+      accept(); // 함수 수정 필요
   });
 });
 
