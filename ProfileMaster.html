@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      async function displayWalletAddress() {
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+
+            // 지갑 주소를 표시할 요소 선택
+            const walletAddressElement = document.querySelector('.x828djwii3892djks');
+
+            // 지갑 주소 표시
+            walletAddressElement.textContent = account;
+            walletAddressLabel.textContent = '지갑 주소: ' + account;
+          } catch (error) {
+            console.error('지갑 주소 가져오기 실패:', error);
+          }
+        } else {
+          console.log('MetaMask가 설치되어 있지 않습니다.');
+        }
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        displayWalletAddress();
+      });
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -33,111 +57,108 @@
   </head>
   <body>
     <div class="profile-master">
-      <div class="hero-section4">
-        <div class="nav-bar4">
-          <div class="logo4">
-            <img class="logo-icon4" alt="" src="./public/logo.svg" />
+      <div class="hero-section1">
+        <div class="nav-bar1">
+          <div class="logo1">
+            <img class="logo-icon1" alt="" src="./public/logo.svg" />
 
-            <div class="h14">GuildDAO</div>
+            <div class="h11">GuildDAO</div>
           </div>
         </div>
-        <div class="divjsx-10844856346">
-          <div class="divrelative13">
-            <div class="divflex38">
-              <div class="divflex39">
-                <div class="div11">
-                  <b class="created2">Created</b>
+        <div class="divjsx-10844856341">
+          <div class="divrelative4">
+            <div class="divflex13">
+              <div class="divflex14">
+                <div class="div3">
+                  <b class="created">Created</b>
                 </div>
-                <div class="divtext-sm3">
-                  <div class="link3">
+                <div class="divtext-sm">
+                  <div class="link">
                     <img
-                      class="down-arrowsvg-fill-icon3"
+                      class="down-arrowsvg-fill-icon"
                       alt=""
                       src="./public/downarrowsvg-fill.svg"
                     />
 
-                    <b class="newest3">Newest</b>
+                    <b class="newest">Newest</b>
                   </div>
                 </div>
               </div>
-              <div class="divflex40">
-                <img
-                  class="hzryvd1fksmp5xj9jqhxschuiv0zvl-icon1"
-                  alt=""
-                  src="./public/hzryvd1fksmp5xj9jqhxschuiv0zvluap3ctf-qtjznflwirwetu-gl60ydho0jhgh6qgftj0xcuukbw3rjtfidygxzz3bwarukw1200s2400rj@2x.png"
-                />
-
-                <div class="divfont-forza1">
-                  <div class="partyblit1">PartyBlit</div>
+              <div class="divflex15">
+                <div class="divfont-forza">
+                  <div class="partyblit">test</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="divjsx-10844856347">
-          <div class="divrelative13">
-            <div class="divflex38">
-              <div class="divflex39">
-                <div class="div11">
-                  <b class="created2">Joined</b>
+        <div class="divjsx-10844856342">
+          <div class="divrelative4">
+            <div class="divflex13">
+              <div class="divflex14">
+                <div class="div3">
+                  <b class="created">Joined</b>
                 </div>
-                <div class="divtext-sm3">
-                  <div class="link3">
+                <div class="divtext-sm">
+                  <div class="link">
                     <img
-                      class="down-arrowsvg-fill-icon3"
+                      class="down-arrowsvg-fill-icon"
                       alt=""
                       src="./public/downarrowsvg-fill.svg"
                     />
 
-                    <b class="newest3">Newest</b>
+                    <b class="newest">Newest</b>
                   </div>
                 </div>
               </div>
-              <div class="divflex43">
-                <div class="no-activity-yet2">No activity yet...</div>
+              <div class="divflex18">
+                <div class="no-activity-yet">No activity yet...</div>
               </div>
             </div>
           </div>
         </div>
+        <a href="a.html"> <!--원하는 페이지 주소 넣을 것.-->
+          <img class="logo-icon2" alt="" src="./public/logo1.svg" />
+        </a>
       </div>
-      <div class="divbg-gradient-to-b3">
-        <div class="divrelative15"></div>
-        <b class="x828djwii3892djks1">0x828djwii3892...djks</b>
-        <div class="divcursor-pointer7">
-          <div class="div13">지갑 주소</div>
-          <img class="svg-icon3" alt="" src="./public/svg1.svg" />
+      <div class="divbg-gradient-to-b1">
+        <div class="divrelative6"></div>
+        <b class="x828djwii3892djks">0x828djwii3892...djks</b>
+        <div class="divcursor-pointer3">
+          <div class="div5">Copy Wallet Address</div>
+          <img class="svg-icon1" alt="" src="./public/svg1.svg" />
         </div>
-        <div class="divrounded-full2"></div>
-        <b class="party-stats1">Party Stats</b>
-        <div class="divrounded-full3"></div>
-        <b class="created3">created</b>
-        <b class="b3">1</b>
-        <b class="hosted1">hosted</b>
-        <b class="b4">0</b>
-        <b class="joined3">joined</b>
-        <b class="b5">0</b>
+        <div class="divrounded-full"></div>
+        <b class="party-stats">Party Stats</b>
+        <div class="divrounded-full1"></div>
+        <b class="created1">created</b>
+        <b class="b">1</b>
+        <b class="hosted">hosted</b>
+        <b class="b1">0</b>
+        <b class="joined1">joined</b>
+        <b class="b2">0</b>
       </div>
-      <div class="divjsx-10844856348">
-        <div class="divrelative13">
-          <div class="divflex38">
-            <div class="divflex39">
-              <div class="div11">
-                <b class="created2">Activity</b>
+      <div class="divjsx-10844856343">
+        <div class="divrelative4">
+          <div class="divflex13">
+            <div class="divflex14">
+              <div class="div3">
+                <b class="created">Activity</b>
               </div>
-              <div class="divtext-sm5">
-                <div class="link3">
+              <div class="divtext-sm2">
+                <div class="link">
                   <img
-                    class="down-arrowsvg-fill-icon3"
+                    class="down-arrowsvg-fill-icon"
                     alt=""
                     src="./public/downarrowsvg-fill.svg"
                   />
 
-                  <b class="newest3">Newest</b>
+                  <b class="newest">Newest</b>
                 </div>
               </div>
             </div>
-            <div class="divflex43">
-              <div class="no-activity-yet3">No activity yet...</div>
+            <div class="divflex18">
+              <div class="no-activity-yet1">No activity yet...</div>
             </div>
           </div>
         </div>
