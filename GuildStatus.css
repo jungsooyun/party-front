@@ -127,7 +127,7 @@
 .svg-icon {
   position: absolute;
   top: calc(50% - 8px);
-  left: 109.1px;
+  left: 345px;
   width: 16px;
   height: 16px;
   overflow: hidden;
@@ -138,7 +138,7 @@
   left: 25px;
   border-radius: var(--br-9980xl);
   background-color: var(--color-lavender-100);
-  width: 133.1px;
+  width: 370px;
   height: 28px;
 }
 .link-svg {
