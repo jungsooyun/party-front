@@ -91,7 +91,9 @@ async function propose() {
     const tokenId = 2; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
     //const user = '0x858013142255cad3FD5137bDf4a7A40348Cb4D4a';
     const expires = 17092948070;
-
+    sessionStorage.setItem('UserID', user);
+    sessionStorage.setItem('NFTContract', nftContract);
+    sessionStorage.setItem('Expires', expires);
     const proposalData = "0x00000004" + (await encodeDistributeProposalData(nftContract, tokenId, user, expires)).substring(2); //"0x00000004": rent는 4번 프로포절
 
     // Proposal 데이터 인코딩

@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // sessionStorage에서 값을 가져옵니다.
+        var userID = sessionStorage.getItem('UserID');
+        var nftContract = sessionStorage.getItem('NFTContract');
+        var expires = sessionStorage.getItem('Expires');
+    
+        // 각 요소를 찾습니다.
+        var userValueElement = document.getElementById('user-value');
+        var expireAtValueElement = document.getElementById('expire-at-value');
+        var nftContractValueElement = document.getElementById('nft-contract-value');
+    
+        // 각 요소의 텍스트를 설정합니다.
+        if (userValueElement && userID) {
+          userValueElement.textContent = 'UserID: ' + userID;
+        }
+        if (expireAtValueElement && expires) {
+          expireAtValueElement.textContent = 'Expires at: ' + expires;
+        }
+        if (nftContractValueElement && nftContract) {
+          nftContractValueElement.textContent = 'NFTcontract: ' + nftContract;
+        }
+      });
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
