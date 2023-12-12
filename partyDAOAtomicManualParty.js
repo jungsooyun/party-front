@@ -48,7 +48,7 @@ async function createPartyTransaction() {
     const preciousTokens = []; // 기본설정
     const preciousTokenIds = []; // 기본설정
     const rageQuitTimestamp = 0; // 기본설정
-    const partyMembers = ['0x8f228554287f7e00042411ef42a531f87b267aff',  '0x9e5E2C11A2f6FacB236FD3C345025103dDe190c7'];
+    const partyMembers = ['0x8EFC11b3f3995ffc22e2917051f5de4091DDA8BB',  '0x9e5E2C11A2f6FacB236FD3C345025103dDe190c7'];
     const partyMemberVotingPowers = ['1000000000000000000', '1000000000000000000'];
 
     const callData = contract.interface.encodeFunctionData("createParty", [
