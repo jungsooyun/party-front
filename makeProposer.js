@@ -84,10 +84,11 @@ async function propose() {
     // const nowSeconds = Math.floor(nowMillis / 1000);
 
     // ProposalData 예시 생성
-    const user = document.getElementById('toAddress').value;
+    const user = '0x8EFC11b3f3995ffc22e2917051f5de4091DDA8BB'
+    //const user = document.getElementById('toAddress').value;
     //const nftContract = parseInt(document.getElementById('nftcontract').value);
     //const expires = parseInt(document.getElementById('periodSeconds').value);
-    const nftContract = '0x72Bb55C70b054Ca8B64C66Ec3f62227F6E59fe35'; // 현우님이 보내준, 건우님이 만들어준 이게 진짜 주소
+    const nftContract = '0x4568d45E9b9008C1958b089AaFcd892168f8FcE7'; // 현우님이 보내준, 건우님이 만들어준 이게 진짜 주소
     const tokenId = 2; // 몇번째인지가 중요한거임. n + 1. 아마도 하드코딩
     //const user = '0x858013142255cad3FD5137bDf4a7A40348Cb4D4a';
     const expires = 17092948070;

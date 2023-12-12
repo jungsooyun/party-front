@@ -23,61 +23,47 @@ if (contractAddress) {
 
 //atomic_base abi
 const contractABI = [
-    {
-        "type": "function",
-        "name": "execute",
-        "inputs": [
-          {
-            "name": "proposalId",
-            "type": "uint256",
-            "internalType": "uint256"
-          },
-          {
-            "name": "proposal",
-            "type": "tuple",
-            "internalType": "struct PartyGovernance.Proposal",
-            "components": [
-              {
-                "name": "maxExecutableTime",
-                "type": "uint40",
-                "internalType": "uint40"
-              },
-              {
-                "name": "cancelDelay",
-                "type": "uint40",
-                "internalType": "uint40"
-              },
-              {
-                "name": "proposalData",
-                "type": "bytes",
-                "internalType": "bytes"
-              }
-            ]
-          },
-          {
-            "name": "preciousTokens",
-            "type": "address[]",
-            "internalType": "contract IERC721[]"
-          },
-          {
-            "name": "preciousTokenIds",
-            "type": "uint256[]",
-            "internalType": "uint256[]"
-          },
-          {
-            "name": "progressData",
-            "type": "bytes",
-            "internalType": "bytes"
-          },
-          {
-            "name": "extraData",
-            "type": "bytes",
-            "internalType": "bytes"
-          }
-        ],
-        "outputs": [],
-        "stateMutability": "payable"
-    },
+  {
+      "type": "function",
+      "name": "propose",
+      "inputs": [
+        {
+          "name": "proposal",
+          "type": "tuple",
+          "internalType": "struct PartyGovernance.Proposal",
+          "components": [
+            {
+              "name": "maxExecutableTime",
+              "type": "uint40",
+              "internalType": "uint40"
+            },
+            {
+              "name": "cancelDelay",
+              "type": "uint40",
+              "internalType": "uint40"
+            },
+            {
+              "name": "proposalData",
+              "type": "bytes",
+              "internalType": "bytes"
+            }
+          ]
+        },
+        {
+          "name": "latestSnapIndex",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable"
+  }
 ];
 
 //골리
@@ -101,9 +87,9 @@ async function execute() {
     const proposalId = 1; //몇 번째 프로포절인지 확인해서 바꿔줘야됨
 
     // ProposalData 예시 생성
-    const nftContract = '0x835A7B3f3EB7458D77834A46e4d6e65F5Cb979BA'; 
+    const nftContract = '0x4568d45E9b9008C1958b089AaFcd892168f8FcE7'; 
     const tokenId = 2; 
-    const user = '0x858013142255cad3FD5137bDf4a7A40348Cb4D4a'; 
+    const user = '0x8EFC11b3f3995ffc22e2917051f5de4091DDA8BB'; 
     const expires = 17092948070; // 일단 고정
 
     const proposalData = "0x00000004" + (await encodeDistributeProposalData(nftContract, tokenId, user, expires)).substring(2); //"0x00000004": Rent는 4번 프로포절
